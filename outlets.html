@@ -1,0 +1,377 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Javascript plugin applications calls + CDNs -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Socket IO Code -->
+        <script src="/socket.io/socket.io.js"></script>
+    
+        <!-- Active Code + Web Interface Here -->
+        
+                <!-- Website Overview -->
+                <div class="panel panel-default">
+                    <div class="col-md-10" id = "header">
+                      <h1><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>OceanPi <small><small>Manage your tank</small></small></h1>
+                    </div>
+
+            </div>
+                  <div class="panel-body">
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet1">
+                        <h2>Doser</h2>
+                        <h4>Outlet 1</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet2">
+                        <h2>Refugium</h2>
+                        <h4>Outlet 2</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet3">
+                        <h2>LEDs</h2>
+                        <h4>Outlet 3</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet4">
+                        <h2>Powerhead</h2>
+                        <h4>Outlet 4</h4>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet5">
+                        <h2>Heater</h2>
+                        <h4>Outlet 5</h4>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet6">
+                        <h2>Auto Top Off</h2>
+                        <h4>Outlet 6</h4>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet7">
+                        <h2>Return Pump</h2>
+                        <h4>Outlet 7</h4>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="well dash-box" id = "outlet8">
+                        <h2>T5's</h2>
+                        <h4>Outlet 8</h4>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <
+
+
+
+        <!-- Javascript + JQuery Calls Here -->
+        <script>
+        var pin1state, pin2state, pin3state, pin4state, pin5state, pin6state, pin7state, pin8state; 
+
+        var socket = io.connect();
+        socket.on('connect', function (data) {
+          //outlet 1
+          socket.emit('pin1', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet1').css('background-color', '#3498db');
+                pin1state = 1;
+              }
+              else {
+                pin1state = 0;
+              }
+          });
+          //outlet 2
+          socket.emit('pin2', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet2').css('background-color', '#3498db');
+                pin2state = 1;
+              }
+              else {
+                pin2state = 0;
+              }
+          });
+          //outlet 3
+          socket.emit('pin3', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet3').css('background-color', '#3498db');
+                pin3state = 1;
+              }
+              else {
+                pin3state = 0;
+              }
+          });
+
+          socket.emit('pin4', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet4').css('background-color', '#3498db');
+                pin4state = 1;
+              }
+              else {
+                pin4state = 0;
+              }
+          });
+
+          socket.emit('pin5', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet5').css('background-color', '#3498db');
+                pin5state = 1;
+              }
+              else {
+                pin5state = 0;
+              }
+          });
+
+          socket.emit('pin6', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet6').css('background-color', '#3498db');
+                pin6state = 1;
+              }
+              else {
+                pin6state = 0;
+              }
+          });
+
+          socket.emit('pin7', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet7').css('background-color', '#3498db');
+                pin7state = 1;
+              }
+              else {
+                pin7state = 0;
+              }
+          });
+
+          socket.emit('pin8', 'recieved', function(data) {
+              if(data == 0) {
+                $('#outlet8').css('background-color', '#3498db');
+                pin8state = 1;
+              }
+              else {
+                pin8state = 0;
+              }
+          });
+
+        });
+
+        function pin1On(){
+          socket.emit('pin1', 'on');
+        }
+        function pin1Off(){
+          socket.emit('pin1', 'off');
+        }
+
+        function pin2On(){
+          socket.emit('pin2', 'on');
+        }
+        function pin2Off(){
+          socket.emit('pin2', 'off');
+        }
+
+        function pin3On(){
+          socket.emit('pin3', 'on');
+        }
+        function pin3Off(){
+          socket.emit('pin3', 'off');
+        }
+
+        function pin4On(){
+          socket.emit('pin4', 'on');
+        }
+        function pin4Off(){
+          socket.emit('pin4', 'off');
+        }
+
+        function pin5On(){
+          socket.emit('pin5', 'on');
+        }
+        function pin5Off(){
+          socket.emit('pin5', 'off');
+        }
+
+        function pin6On(){
+          socket.emit('pin6', 'on');
+        }
+        function pin6Off(){
+          socket.emit('pin6', 'off');
+        }
+
+        function pin7On(){
+          socket.emit('pin7', 'on');
+        }
+        function pin7Off(){
+          socket.emit('pin7', 'off');
+        }
+
+        function pin8On(){
+          socket.emit('pin8', 'on');
+        }
+        function pin8Off(){
+          socket.emit('pin8', 'off');
+        }
+
+        //initial javascript loading function
+        $("#outlet1").on("click", function() {
+            if(pin1state == 0) {
+              pin1Off();
+              $('#outlet1').css('background-color', '#3498db');
+              pin1state = 1;
+              
+            }
+            else {
+              pin1On();
+              $('#outlet1').css('background-color', '#FFFFFF');
+              pin1state = 0;
+              
+            }
+        });
+
+        $("#outlet2").on("click", function() {
+            if(pin2state == 0) {
+              pin2Off();
+              $('#outlet2').css('background-color', '#3498db');
+              pin2state = 1;
+              
+            }
+            else {
+              pin2On();
+              $('#outlet2').css('background-color', '#FFFFFF');
+              pin2state = 0;
+              
+            }
+        });
+            
+        $("#outlet3").on("click", function() {
+            if(pin3state == 0) {
+              pin3Off();
+              $('#outlet3').css('background-color', '#3498db');
+              pin3state = 1;
+              
+            }
+            else {
+              pin3On();
+              $('#outlet3').css('background-color', '#FFFFFF');
+              pin3state = 0;
+              
+            }
+        });
+
+        $("#outlet4").on("click", function() {
+            if(pin4state == 0) {
+              pin4Off();
+              $('#outlet4').css('background-color', '#3498db');
+              pin4state = 1;
+              
+            }
+            else {
+              pin4On();
+              $('#outlet4').css('background-color', '#FFFFFF');
+              pin4state = 0;
+              
+            }
+        });
+
+        $("#outlet5").on("click", function() {
+            if(pin5state == 0) {
+              pin5Off();
+              $('#outlet5').css('background-color', '#3498db');
+              pin5state = 1;
+              
+            }
+            else {
+              pin5On();
+              $('#outlet5').css('background-color', '#FFFFFF');
+              pin5state = 0;
+              
+            }
+        });
+
+        $("#outlet6").on("click", function() {
+            if(pin6state == 0) {
+              pin6Off();
+              $('#outlet6').css('background-color', '#3498db');
+              pin6state = 1;
+              
+            }
+            else {
+              pin6On();
+              $('#outlet6').css('background-color', '#FFFFFF');
+              pin6state = 0;
+              
+            }
+        });
+
+        $("#outlet7").on("click", function() {
+            if(pin7state == 0) {
+              pin7Off();
+              $('#outlet7').css('background-color', '#3498db');
+              pin7state = 1;
+              
+            }
+            else {
+              pin7On();
+              $('#outlet7').css('background-color', '#FFFFFF');
+              pin7state = 0;
+              
+            }
+        });
+
+        $("#outlet8").on("click", function() {
+            if(pin8state == 0) {
+              pin8Off();
+              $('#outlet8').css('background-color', '#3498db');
+              pin8state = 1;
+              
+            }
+            else {
+              pin8On();
+              $('#outlet8').css('background-color', '#FFFFFF');
+              pin8state = 0;
+              
+            }
+        });
+
+
+        </script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+        }
+    </body>
+</html>

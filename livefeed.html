@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OceanPi Streaming</title>
+<!-- Bootstrap CSS -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<style type="text/css">
+
+
+#stream {
+height: 80%;
+margin: 0px auto;
+display: block;
+margin-top: 20px;
+width: 80%;
+}
+
+
+</style>
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+var socket = io();
+socket.on('liveStream', function(url) {
+$('#stream').attr('src', url);
+$('.start').hide();
+});
+function startStream() {
+socket.emit('start-stream');
+$('.start').hide();
+}
+</script>
+</head>
+<header id="header">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-10">
+                <span id = "topHead"> <h1><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>OceanPi<small><small>Manage your tank</small></small></h1></span>
+            </div>
+
+        </div>
+    </div>
+</header>
+<hr>
+<button type="button" id="" class="btn btn-info start" position = "center" onclick="startStream()">Stream Camera</button>
+<div class="row">
+<img src="" id="stream">
+</div>
+</body>
+</html>

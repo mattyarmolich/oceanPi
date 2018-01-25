@@ -1,0 +1,30 @@
+{
+  "name": "oceanpi",
+  "version": "1.0.0",
+  "description": "oceanPi v1.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "oceanPi"
+  },
+  "keywords": [
+    "ocean",
+    "reef",
+    "controller",
+    "nodeJS"
+  ],
+  "author": "matt yarmo",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.7.1",
+    "express": "^4.16.2",
+    "mini-ph": "^1.0.2",
+    "moment": "^2.19.1",
+    "onoff": "^1.1.8",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {}
+}
